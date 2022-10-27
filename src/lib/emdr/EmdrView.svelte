@@ -90,12 +90,10 @@
 			{ size, gap, color },
 			usedAnimationOptions
 		)
+		if (emdr) emdr.cancelAnimation()
 	}
 </script>
 
-<pre>
-	{usedAnimationOptions.duration}
-</pre>
 <div class="w-full flex flex-col justify-center items-center gap-10">
 	<div class="w-full flex justify-center items-center gap-4">
 		<button class="button" on:click={() => emdr.startAnimation(config)}>
@@ -105,9 +103,9 @@
 			Stop
 		</button>
 	</div>
-	<div class="w-full flex justify-center items-center gap-4 columns-4">
+	<div class="w-full md:flex xs:flex-col lg:justify-center gap-4">
 		<div>
-			Choose ball size:
+			<p>Choose ball size:</p>
 			<select bind:value={selectedSize} on:change={onSizeChanged}>
 				{#each sizes as size}
 					<option value={size} selected={size === selectedSize}>{size}</option>
@@ -115,7 +113,7 @@
 			</select>
 		</div>
 		<div>
-			Choose animation type:
+			<p>Choose animation type:</p>
 			<select bind:value={selectedPreset}>
 				{#each presets as preset}
 					<option value={preset} selected={preset === selectedPreset}
@@ -125,7 +123,7 @@
 			</select>
 		</div>
 		<div>
-			Choose session duration (min):
+			<p>Choose session duration (min):</p>
 			<input
 				bind:value={selectedSessionDurationInMinutes}
 				on:change={onSessionDurationChanged}
@@ -137,7 +135,7 @@
 			{selectedSessionDurationInMinutes} min
 		</div>
 		<div>
-			Choose speed:
+			<p>Choose speed:</p>
 			<input
 				bind:value={selectedSpeed}
 				on:change={onSessionSpeedChanged}
