@@ -10,8 +10,10 @@
 		ViewSettings
 	} from './Emdr.types'
 
-	const defaultDuration = 1500
+	const defaultDuration = 1000
 	const defaultIterations = 40
+	const durationFromSpeedMultiplier = 500
+	const speedSettings = { max: 5, min: 1, step: 1 }
 	const defaultSessionDuration = 1 // min
 	const defaultAnimationOptions: AnimationOptions = {
 		duration: defaultDuration,
@@ -45,8 +47,26 @@
 	let usedAnimationOptions = mergedAnimationOptions
 
 	let selectedSessionDurationInMinutes: number = defaultSessionDuration
+
 	const onSizeChanged = () => {
 		size = parseInt(selectedSize)
+	}
+
+	let selectedSpeed: number =
+		speedSettings.max +
+		1 -
+		(usedAnimationOptions.duration ?? defaultDuration) /
+			durationFromSpeedMultiplier
+
+	const onSessionSpeedChanged = () => {
+		// want the greater speed, the faster
+		const duration =
+			(speedSettings.max + 1 - selectedSpeed) * durationFromSpeedMultiplier
+
+		usedAnimationOptions = {
+			...usedAnimationOptions,
+			duration
+		}
 	}
 
 	const onSessionDurationChanged = () => {
@@ -74,7 +94,7 @@
 </script>
 
 <pre>
-	{usedAnimationOptions.iterations}
+	{usedAnimationOptions.duration}
 </pre>
 <div class="w-full flex flex-col justify-center items-center gap-10">
 	<div class="w-full flex justify-center items-center gap-4">
@@ -85,7 +105,7 @@
 			Stop
 		</button>
 	</div>
-	<div class="w-full flex justify-center items-center gap-4 columns-3">
+	<div class="w-full flex justify-center items-center gap-4 columns-4">
 		<div>
 			Choose ball size:
 			<select bind:value={selectedSize} on:change={onSizeChanged}>
@@ -115,6 +135,16 @@
 				step="0.5"
 			/>
 			{selectedSessionDurationInMinutes} min
+		</div>
+		<div>
+			Choose speed:
+			<input
+				bind:value={selectedSpeed}
+				on:change={onSessionSpeedChanged}
+				type="range"
+				{...speedSettings}
+			/>
+			{selectedSpeed}
 		</div>
 	</div>
 
