@@ -6,4 +6,6 @@
 	<title>Emdr</title>
 </svelte:head>
 
-<EmdrView />
+<div class="container mx-auto py-4">
+	<EmdrView />
+</div>

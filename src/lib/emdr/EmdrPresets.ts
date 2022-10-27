@@ -2,7 +2,7 @@ import type {
 	AnimationConfig,
 	AnimationOptions,
 	NameOfPreset,
-	ViewSettings,
+	ViewSettings
 } from './Emdr.types'
 
 const animationConfig = (
@@ -16,26 +16,26 @@ const animationConfig = (
 				{ left: 0, offset: 0 },
 				{
 					left: `calc(100% - ${viewSetting.size * 2 + viewSetting.gap}px)`,
-					offset: 1,
-				},
+					offset: 1
+				}
 			],
 			options: {
-				easing: 'ease-in-out',
+				easing: 'linear',
 				...animationOptions,
-				direction: 'alternate',
-			},
+				direction: 'alternate'
+			}
 		},
 		flick: {
 			keyframes: [
 				{ left: 0, offset: 0 },
-				{ right: 0, offset: 1 },
+				{ right: 0, offset: 1 }
 			],
 			options: {
 				...animationOptions,
 				easing: 'linear',
-				direction: 'alternate',
-			},
-		},
+				direction: 'alternate'
+			}
+		}
 	}
 
 	return presets[nameOfPreset]

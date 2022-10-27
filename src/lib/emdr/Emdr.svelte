@@ -1,16 +1,9 @@
 <script lang="ts">
-	import { defaults } from 'lodash-es'
-	import type { AnimationConfig, ViewSettings } from './Emdr.types'
+	import type { AnimationConfig } from './Emdr.types'
 
-	export let viewSettings: Partial<ViewSettings> = {}
-
-	const defaultViewSettings = {
-		size: 64,
-		gap: 8,
-		color: 'indigo'
-	}
-
-	const { size, gap, color } = defaults(viewSettings, defaultViewSettings)
+	export let size: number = 64
+	export let gap: number = 8
+	export let color: string = 'indigo'
 
 	let container: HTMLElement
 	let animation: Animation | null
