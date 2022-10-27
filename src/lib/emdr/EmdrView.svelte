@@ -22,7 +22,7 @@
 	const defaultViewSettings: ViewSettings = {
 		gap: 8,
 		size: 64,
-		color: 'indigo'
+		color: 'rgb(5 150 105)'
 	}
 	const sizes = ['24', '32', '48', '64', '72']
 	const presets = ['smooth', 'flick']

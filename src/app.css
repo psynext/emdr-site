@@ -14,4 +14,12 @@
     .button-danger {
         @apply button bg-red-900
     }
+
+    .select {
+
+    }
+
+    html.dark select {
+        @apply bg-stone-100 text-stone-700
+    }
 }
