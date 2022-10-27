@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .button {
+        @apply px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100
+    }
+
+    .button-primary {
+        @apply button bg-fuchsia-500
+    }
+
+    .button-danger {
+        @apply button bg-red-900
+    }
+}

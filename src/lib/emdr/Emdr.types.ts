@@ -20,6 +20,7 @@ export interface AnimationOptions {
 export interface ViewSettings {
 	size: number
 	gap: number
+	color: string
 }
 
 export type NameOfPreset = 'smooth' | 'flick'

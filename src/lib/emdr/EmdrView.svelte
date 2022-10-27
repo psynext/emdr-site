@@ -9,7 +9,7 @@
 	} from './Emdr.types'
 
 	export let nameOfPreset: NameOfPreset = 'smooth'
-	export let viewSettings: ViewSettings = { gap: 8, size: 64 }
+	export let viewSettings: ViewSettings = { gap: 8, size: 64, color: 'indigo' }
 	export let animationOptions: AnimationOptions = {
 		duration: 1000,
 		iterations: Infinity,
@@ -24,8 +24,12 @@
 
 <div class="w-full flex flex-col justify-center items-center gap-10">
 	<div class="w-full flex justify-center items-center gap-4">
-		<button on:click={() => emdr.startAnimation(config)}>Start</button>
-		<button on:click={() => emdr.cancelAnimation()}>Stop</button>
+		<button class="button" on:click={() => emdr.startAnimation(config)}
+			>Start</button
+		>
+		<button class="button-danger" on:click={() => emdr.cancelAnimation()}
+			>Stop</button
+		>
 	</div>
 
 	<Emdr {viewSettings} bind:this={emdr} />

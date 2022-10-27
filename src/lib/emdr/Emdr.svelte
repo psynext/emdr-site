@@ -1,7 +1,16 @@
 <script lang="ts">
+	import { defaults } from 'lodash-es'
 	import type { AnimationConfig, ViewSettings } from './Emdr.types'
 
-	export let viewSettings: ViewSettings = { size: 64, gap: 8 }
+	export let viewSettings: Partial<ViewSettings> = {}
+
+	const defaultViewSettings = {
+		size: 64,
+		gap: 8,
+		color: 'indigo'
+	}
+
+	const { size, gap, color } = defaults(viewSettings, defaultViewSettings)
 
 	let container: HTMLElement
 	let animation: Animation | null
@@ -25,20 +34,20 @@
 	class:items-center={true}
 	class:relative={true}
 	class:justify-center={!animation}
-	style={`min-height: ${viewSettings.size}px`}
+	style={`min-height: ${size}px`}
 >
 	<div
 		class="flex absolute top-0"
-		style={`gap: ${viewSettings.gap}px`}
+		style={`gap: ${gap}px`}
 		bind:this={container}
 	>
 		<div
-			class="bg-primary rounded-full"
-			style={`width: ${viewSettings.size}px; height: ${viewSettings.size}px`}
+			class="rounded-full"
+			style={`width: ${size}px; height: ${size}px; background-color: ${color};`}
 		/>
 		<div
-			class="bg-primary rounded-full"
-			style={`width: ${viewSettings.size}px; height: ${viewSettings.size}px`}
+			class="rounded-full"
+			style={`width: ${size}px; height: ${size}px; background-color: ${color};`}
 		/>
 	</div>
 </div>
