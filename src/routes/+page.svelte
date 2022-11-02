@@ -7,6 +7,6 @@
 	<title>{$_('page.index.title')}</title>
 </svelte:head>
 
-<div class="container mx-auto py-4">
+<div class="container mx-auto py-4 h-full w-full">
 	<EmdrView />
 </div>

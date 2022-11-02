@@ -95,7 +95,7 @@
 	}
 </script>
 
-<div class="w-full flex flex-col justify-center items-center gap-10">
+<div class="w-full h-full flex flex-col justify-center items-center gap-10">
 	<div class="w-full flex justify-center items-center gap-4">
 		<button class="button" on:click={() => emdr.startAnimation(config)}>
 			{$_('emdrView.button.start')}
@@ -150,5 +150,7 @@
 		</div>
 	</div>
 
-	<Emdr {size} {gap} {color} bind:this={emdr} />
+	<div class="flex w-full h-full items-center">
+		<Emdr {size} {gap} {color} bind:this={emdr} />
+	</div>
 </div>
