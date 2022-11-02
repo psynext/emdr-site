@@ -1,0 +1,14 @@
+{
+	"modeSwitch.label.light": "Switch to light mode",
+	"modeSwitch.label.dark": "Switch to dark mode",
+	"page.index.title": "Emdr",
+	"emdrView.select.speed": "Choose speed",
+	"emdrView.select.sessionDuration": "Choose session duration (min)",
+	"emdrView.select.animationType": "Choose animation type",
+	"emdrView.select.ballSize": "Choose ball size",
+	"emdrView.button.stop": "Stop",
+	"emdrView.button.start": "Start",
+	"emdrView.animationType.smooth": "smooth",
+	"emdrView.animationType.flick": "flick",
+	"common.minutes.short": "min"
+}

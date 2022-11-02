@@ -1,0 +1,14 @@
+{
+	"modeSwitch.label.light": "Переключить на светлую тему",
+	"modeSwitch.label.dark": "Переключить на темную тему",
+	"page.index.title": "Emdr",
+	"emdrView.select.speed": "Скорость",
+	"emdrView.select.sessionDuration": "Длительность сессии (мин)",
+	"emdrView.select.animationType": "Вид анимации",
+	"emdrView.select.ballSize": "Размер шаров",
+	"emdrView.button.stop": "Остановить",
+	"emdrView.button.start": "Начать",
+	"emdrView.animationType.smooth": "плавная",
+	"emdrView.animationType.flick": "резкая",
+	"common.minutes.short": "мин"
+}

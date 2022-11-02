@@ -1,0 +1,14 @@
+{
+	"modeSwitch.label.light": "Переключити на світлу тему",
+	"modeSwitch.label.dark": "Переключити на темну тему",
+	"page.index.title": "Emdr",
+	"emdrView.select.speed": "Швидкість",
+	"emdrView.select.sessionDuration": "Час сессії (хв)",
+	"emdrView.select.animationType": "Вид анімації",
+	"emdrView.select.ballSize": "Розмір мʼячів",
+	"emdrView.button.stop": "Зупинити",
+	"emdrView.button.start": "Почати",
+	"emdrView.animationType.smooth": "пливуча",
+	"emdrView.animationType.flick": "різка",
+	"common.minutes.short": "хв"
+}

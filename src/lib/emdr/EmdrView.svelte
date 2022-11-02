@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { _ } from 'svelte-i18n'
 	import { defaults } from 'lodash-es'
 	import Emdr from './Emdr.svelte'
 	import animationConfig from './EmdrPresets'
@@ -97,15 +98,15 @@
 <div class="w-full flex flex-col justify-center items-center gap-10">
 	<div class="w-full flex justify-center items-center gap-4">
 		<button class="button" on:click={() => emdr.startAnimation(config)}>
-			Start
+			{$_('emdrView.button.start')}
 		</button>
 		<button class="button-danger" on:click={() => emdr.cancelAnimation()}>
-			Stop
+			{$_('emdrView.button.stop')}
 		</button>
 	</div>
 	<div class="w-full md:flex xs:flex-col lg:justify-center gap-4">
 		<div>
-			<p>Choose ball size:</p>
+			<p>{$_('emdrView.select.ballSize')}:</p>
 			<select bind:value={selectedSize} on:change={onSizeChanged}>
 				{#each sizes as size}
 					<option value={size} selected={size === selectedSize}>{size}</option>
@@ -113,17 +114,19 @@
 			</select>
 		</div>
 		<div>
-			<p>Choose animation type:</p>
+			<p>{$_('emdrView.select.animationType')}:</p>
 			<select bind:value={selectedPreset}>
 				{#each presets as preset}
 					<option value={preset} selected={preset === selectedPreset}
-						>{preset}</option
+						>{$_(`emdrView.animationType.${preset}`)}</option
 					>
 				{/each}
 			</select>
 		</div>
 		<div>
-			<p>Choose session duration (min):</p>
+			<p>
+				{$_('emdrView.select.sessionDuration')}:
+			</p>
 			<input
 				bind:value={selectedSessionDurationInMinutes}
 				on:change={onSessionDurationChanged}
@@ -132,10 +135,11 @@
 				max="20"
 				step="0.5"
 			/>
-			{selectedSessionDurationInMinutes} min
+			{selectedSessionDurationInMinutes}
+			{$_('common.minutes.short')}
 		</div>
 		<div>
-			<p>Choose speed:</p>
+			<p>{$_('emdrView.select.speed')}:</p>
 			<input
 				bind:value={selectedSpeed}
 				on:change={onSessionSpeedChanged}

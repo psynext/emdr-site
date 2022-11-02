@@ -1,6 +1,9 @@
 <script lang="ts">
+	import '../i18n'
 	import '../app.css'
+	import { _ } from 'svelte-i18n'
 	import { browser } from '$app/environment'
+	import LanguageSelector from '$lib/translations/LanguageSelector.svelte'
 
 	let dark: boolean
 
@@ -41,8 +44,12 @@
 		type="button"
 		class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
 	>
-		Switch to {dark ? 'light' : 'dark'} mode
+		{dark ? $_('modeSwitch.label.light') : $_('modeSwitch.label.dark')}
 	</button>
+</div>
+
+<div class="absolute m-2 right-0">
+	<LanguageSelector />
 </div>
 
 <slot />
