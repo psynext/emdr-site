@@ -42,6 +42,7 @@
 	let emdr: EmdrInstance
 
 	let config: AnimationConfig
+	let isPlaying: boolean = false
 
 	let selectedSize: string = `${size}`
 	let selectedPreset: NameOfPreset = nameOfPreset
@@ -91,66 +92,96 @@
 			{ size, gap, color },
 			usedAnimationOptions
 		)
-		if (emdr) emdr.cancelAnimation()
+		if (emdr) {
+			emdr.cancelAnimation()
+			isPlaying = false
+		}
 	}
 </script>
 
-<div class="w-full h-full flex flex-col justify-center items-center gap-10">
-	<div class="w-full flex justify-center items-center gap-4">
-		<button class="button" on:click={() => emdr.startAnimation(config)}>
+<div class="w-full h-full flex flex-col justify-center items-center">
+	<div class="w-full flex justify-center items-center gap-4 mb-4">
+		<button
+			class="button"
+			on:click={() => {
+				emdr.startAnimation(config)
+				isPlaying = true
+			}}
+		>
 			{$_('emdrView.button.start')}
 		</button>
-		<button class="button-danger" on:click={() => emdr.cancelAnimation()}>
+		<button
+			class="button-danger"
+			on:click={() => {
+				emdr.cancelAnimation()
+				isPlaying = false
+			}}
+		>
 			{$_('emdrView.button.stop')}
 		</button>
 	</div>
-	<div class="w-full md:flex xs:flex-col lg:justify-center gap-4">
-		<div>
-			<p>{$_('emdrView.select.ballSize')}:</p>
-			<select bind:value={selectedSize} on:change={onSizeChanged}>
-				{#each sizes as size}
-					<option value={size} selected={size === selectedSize}>{size}</option>
-				{/each}
-			</select>
+	<div class:opacity-25={isPlaying}>
+		<div class="row mb-4">
+			<div class="grow basis-1/4 min-w-1/5">
+				<p>{$_('emdrView.select.ballSize')}:</p>
+				<select
+					bind:value={selectedSize}
+					class="select"
+					on:change={onSizeChanged}
+				>
+					{#each sizes as size}
+						<option value={size} selected={size === selectedSize}>{size}</option
+						>
+					{/each}
+				</select>
+			</div>
+			<div class="grow basis-1/4 min-w-1/5">
+				<p>{$_('emdrView.select.animationType')}:</p>
+				<select bind:value={selectedPreset} class="select">
+					{#each presets as preset}
+						<option value={preset} selected={preset === selectedPreset}
+							>{$_(`emdrView.animationType.${preset}`)}</option
+						>
+					{/each}
+				</select>
+			</div>
 		</div>
-		<div>
-			<p>{$_('emdrView.select.animationType')}:</p>
-			<select bind:value={selectedPreset}>
-				{#each presets as preset}
-					<option value={preset} selected={preset === selectedPreset}
-						>{$_(`emdrView.animationType.${preset}`)}</option
-					>
-				{/each}
-			</select>
-		</div>
-		<div>
-			<p>
-				{$_('emdrView.select.sessionDuration')}:
-			</p>
-			<input
-				bind:value={selectedSessionDurationInMinutes}
-				on:change={onSessionDurationChanged}
-				type="range"
-				min="1"
-				max="20"
-				step="0.5"
-			/>
-			{selectedSessionDurationInMinutes}
-			{$_('common.minutes.short')}
-		</div>
-		<div>
-			<p>{$_('emdrView.select.speed')}:</p>
-			<input
-				bind:value={selectedSpeed}
-				on:change={onSessionSpeedChanged}
-				type="range"
-				{...speedSettings}
-			/>
-			{selectedSpeed}
+
+		<div class="row">
+			<div class="grow basis-1/4">
+				<p>
+					{$_('emdrView.select.sessionDuration')}:
+				</p>
+				<input
+					bind:value={selectedSessionDurationInMinutes}
+					on:change={onSessionDurationChanged}
+					type="range"
+					min="1"
+					max="20"
+					step="0.5"
+				/>
+				{selectedSessionDurationInMinutes}
+				{$_('common.minutes.short')}
+			</div>
+			<div class="grow basis-1/4">
+				<p>{$_('emdrView.select.speed')}:</p>
+				<input
+					bind:value={selectedSpeed}
+					on:change={onSessionSpeedChanged}
+					type="range"
+					{...speedSettings}
+				/>
+				{selectedSpeed}
+			</div>
 		</div>
 	</div>
-
 	<div class="flex w-full h-full items-center">
 		<Emdr {size} {gap} {color} bind:this={emdr} />
 	</div>
 </div>
+
+<style lang="postcss">
+	.row {
+		@apply w-full flex items-start gap-4;
+	}
+</style>
