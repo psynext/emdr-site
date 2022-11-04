@@ -3,6 +3,7 @@
 	import '../app.css'
 	import { _ } from 'svelte-i18n'
 	import { browser } from '$app/environment'
+	import Alert from '$lib/alert/Alert.svelte'
 	import LanguageSelector from '$lib/translations/LanguageSelector.svelte'
 
 	let dark: boolean
@@ -38,18 +39,24 @@
 	}
 </script>
 
-<div class="absolute m-2">
-	<button
-		on:click={onSwitchThemeClick}
-		type="button"
-		class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
-	>
-		{dark ? $_('modeSwitch.label.light') : $_('modeSwitch.label.dark')}
-	</button>
-</div>
-
-<div class="absolute m-2 right-0">
-	<LanguageSelector />
-</div>
+<Alert customClass="landscape:hidden bg-emerald-600">
+	{$_('common.mobile.use-landscape')}
+</Alert>
 
 <slot />
+
+<footer class="mt-auto flex justify-between p-2">
+	<div class="">
+		<button
+			on:click={onSwitchThemeClick}
+			type="button"
+			class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+		>
+			{dark ? $_('modeSwitch.label.light') : $_('modeSwitch.label.dark')}
+		</button>
+	</div>
+
+	<div class="">
+		<LanguageSelector />
+	</div>
+</footer>

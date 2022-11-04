@@ -4,15 +4,15 @@
 
 @layer components {
     .button {
-        @apply px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100
+        @apply inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
     }
-
     .button-primary {
-        @apply button bg-fuchsia-500
+        @apply button border-transparent bg-indigo-600 text-white hover:bg-indigo-700
+        /* @apply px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 */
     }
 
     .button-danger {
-        @apply button bg-red-900
+        @apply button bg-red-600 text-white hover:bg-red-700 focus:ring-red-500
     }
 
     .select {
@@ -21,5 +21,9 @@
 
     html.dark select {
         @apply bg-stone-100 text-stone-700
+    }
+
+    .select {
+        @apply border-gray-300 shadow-sm h-full rounded-md bg-white py-2 pl-2 pr-7 text-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm
     }
 }

@@ -10,5 +10,6 @@
 	"emdrView.button.start": "Start",
 	"emdrView.animationType.smooth": "smooth",
 	"emdrView.animationType.flick": "flick",
-	"common.minutes.short": "min"
+	"common.minutes.short": "min",
+	"common.mobile.use-landscape": "You can rotate your device for better expirience."
 }

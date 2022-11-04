@@ -10,5 +10,6 @@
 	"emdrView.button.start": "Начать",
 	"emdrView.animationType.smooth": "плавная",
 	"emdrView.animationType.flick": "резкая",
-	"common.minutes.short": "мин"
+	"common.minutes.short": "мин",
+	"common.mobile.use-landscape": "Для удобства мы можете повернуть устройство."
 }

@@ -10,5 +10,6 @@
 	"emdrView.button.start": "Почати",
 	"emdrView.animationType.smooth": "пливуча",
 	"emdrView.animationType.flick": "різка",
-	"common.minutes.short": "хв"
+	"common.minutes.short": "хв",
+	"common.mobile.use-landscape": "Ви можете повернути пристрій для зручності."
 }
