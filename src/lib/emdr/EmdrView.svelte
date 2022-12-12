@@ -103,6 +103,7 @@
 	<div class="w-full flex justify-center items-center gap-4 mb-4">
 		<button
 			class="button"
+			disabled={isPlaying}
 			on:click={() => {
 				emdr.startAnimation(config)
 				isPlaying = true
@@ -112,6 +113,7 @@
 		</button>
 		<button
 			class="button-danger"
+			disabled={!isPlaying}
 			on:click={() => {
 				emdr.cancelAnimation()
 				isPlaying = false
